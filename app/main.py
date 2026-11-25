@@ -42,6 +42,8 @@ async def lifespan(_):
     with db.database(True) as conn:
         if not rules.version(conn)[0]:
             rules.save(conn,rules.DEFAULT)
+    with db.database() as conn:
+        rules.export_versions(conn)
     tasks = [asyncio.create_task(feed.run(rules.evaluate)),asyncio.create_task(feed.repair(rules.evaluate))] if KEY and SECRET else []
     try:
         yield
@@ -354,9 +356,12 @@ def change_rules(body: RuleChange):
                 cfg = yaml.safe_load(body.yaml_text)
             else:
                 cfg = body.config
-            return {"id":rules.save(conn,cfg)}
+            ident = rules.save(conn,cfg)
         except (ValueError,yaml.YAMLError,RecursionError) as exc:
             raise invalid(exc) from exc
+    with db.database() as conn:
+        rules.export_versions(conn,ident)
+    return {"id":ident}
 
 @app.put("/api/risk")
 def risk_configuration(body: dict[str,float]):

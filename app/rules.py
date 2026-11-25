@@ -1,10 +1,17 @@
 import json
 import math
+import logging
+import os
+import tempfile
+from pathlib import Path
 import time
 
 import yaml
 
+from . import db
 from .market import SYMBOLS, aggregate, session
+
+log = logging.getLogger(__name__)
 
 # Key, group, comparison, threshold, lookback, description.
 DEFINITIONS = [
@@ -86,6 +93,26 @@ def save(conn, config):
     validate(config)
     return conn.execute("INSERT INTO versions(t,yaml) VALUES(?,?)",
                         (int(time.time()), yaml.safe_dump(config))).lastrowid
+
+def export_versions(conn, ident=None):
+    """Mirror committed YAML documents in the data volume for inspection."""
+    folder = db.ROOT / "rules"
+    rows = (conn.execute("SELECT id,yaml FROM versions") if ident is None else
+            conn.execute("SELECT id,yaml FROM versions WHERE id=?",(ident,)))
+    try:
+        folder.mkdir(exist_ok=True)
+        for row in rows:
+            target = folder / f"v{row['id']:06d}.yaml"
+            if target.exists() and target.read_text()==row["yaml"]:
+                continue
+            with tempfile.NamedTemporaryFile(mode="w",dir=folder,delete=False) as stream:
+                stream.write(row["yaml"])
+            try:
+                os.replace(stream.name,target)
+            finally:
+                Path(stream.name).unlink(missing_ok=True)
+    except OSError:
+        log.exception("version_file_export_failed")
 
 def ema(values, period):
     if not values:

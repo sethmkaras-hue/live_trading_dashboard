@@ -212,7 +212,7 @@ export function Rules({live,symbol}:{live:Live|null,symbol:string}){
       {(['Entry','Warning','Exit','Risk'] as const).map(group=><Section key={group} title={{Entry:'Entry conditions',Warning:'Momentum warnings',Exit:'Exit conditions',Risk:'Risk management'}[group]}>
         {Object.entries(config.rules).filter(([k])=>data.metadata[k].group===group).map(([key,r])=><details className="rule-editor" key={key}>
           <summary><b>{title(key)}</b><span className={'tag '+(r.enabled?'good':'')}>{r.enabled?r.mandatory?'Mandatory':'Enabled':'Disabled'}</span></summary>
-          <p className="muted">{data.metadata[key].description}. Compare {data.metadata[key].comparison} {r.threshold}; require {r.confirmations} confirmation bar(s) on {r.symbol} {r.timeframe}m with a {r.lookback}-bar lookback.</p>
+          <p className="muted">{data.metadata[key].description}. Compare {data.metadata[key].comparison} {r.threshold}. Require {r.confirmations} confirmation bar(s) on {r.symbol} {r.timeframe}m with a {r.lookback}-bar lookback.</p>
           <div className="fields">
             <label>Enabled<select value={String(r.enabled)} onChange={e=>update(key,{enabled:e.target.value==='true'})}><option value="true">Yes</option><option value="false">No</option></select></label>
             <label>Instrument<select value={r.symbol} onChange={e=>update(key,{symbol:e.target.value})}>{[...new Set([r.symbol,...Object.keys(live?.diagnostics.symbols??{SPY:true,SPYU:true})])].map(s=><option key={s}>{s}</option>)}</select></label>

@@ -27,7 +27,7 @@ The bootstrap migration creates these tables and stores the schema version in SQ
 | flows | id | UTC recorded time, signed cash amount and note |
 | settings | key | JSON document for risk preferences and stage |
 
-The UI exports each active YAML document as a versioned file. SQLite stores the immutable YAML versions in the same backup as journal data. Rollback inserts a new version with earlier settings. Live-rule evaluation and writes use the committed rule version.
+The UI exports each active YAML document as a versioned file. SQLite stores the authoritative immutable YAML versions in the same backup as journal data. The server mirrors committed versions to `/data/rules/vNNNNNN.yaml`. Treat these files as exports and apply edits through the rule editor or YAML import. Rollback inserts a new version with earlier settings. Live-rule evaluation and writes use the committed rule version.
 
 ## Accounting
 

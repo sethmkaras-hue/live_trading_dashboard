@@ -20,3 +20,7 @@ IEX covers a subset of US equity trading. Some minutes may have no eligible trad
 - Execution markers use the relevant candle slot and label the recorded time and price. When a slot has no candle, the execution remains visible in the journal.
 - Default policy assumes USD, regular sessions, long positions, and a single private user. No order placement or automated broker synchronization is provided.
 - Mobile layout is responsive in source. Managed browser relay startup prevented an iPhone-size browser check in this environment.
+
+## Software verification
+
+The Python suite exercises aggregation, missing and duplicate bars, immutable levels, indicator and signal logic, stale-data suppression, reconnect backoff, session boundaries, weighted-average accounting, partial fills, oversell rejection, rule version history, trade review context, screenshot validation, authenticated WebSockets, export, and SQLite backup/restore. TypeScript checking and the production frontend build passed. A Docker Compose smoke test verified application health, anonymous access rejection, authenticated access, and persistence of a test execution after a restart. The smoke test used an isolated volume and no Alpaca credentials.
