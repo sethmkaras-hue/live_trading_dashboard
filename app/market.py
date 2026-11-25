@@ -209,7 +209,7 @@ class Feed:
                 "SELECT t FROM bars WHERE symbol=? AND t>=? AND t<?", (symbol, start or 0, stop))}
             missing = sorted(set(range(start, stop, 60)) - present) if start and stop > start else []
             tick = self.prices.get(symbol, {})
-            age = now - tick["t"] if tick else None
+            age = now - int(tick["t"]) if tick else None
             fresh = self.status == "Connected" and hours["open"] and age is not None and 0 <= age <= 30
             result[symbol] = dict(tick, age=age, fresh=fresh, updates_per_minute=len(ticks),
                                   mean_latency=round(sum(self.latencies[symbol]) /

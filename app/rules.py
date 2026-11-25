@@ -302,7 +302,7 @@ def evaluate(conn, t, now, feed):
         required = {"SPY",symbol} | {v["symbol"] for v in config["rules"].values()
                                      if v["enabled"] and v["mandatory"]}
         quality = "fresh" if feed.status=="Connected" and session(now)["open"] and all(
-            0<=now-feed.prices.get(s,{}).get("t",0)<=30 and
+            0<=now-int(feed.prices.get(s,{}).get("t",0))<=30 and
             {r["t"] for r in rows[s][-5:]} >= set(range(max(start,t-240),t+60,60))
             for s in required) else "stale or incomplete"
         payload = dict(t=now, candle=t, symbol=symbol, price=prices[symbol], spy=prices["SPY"],

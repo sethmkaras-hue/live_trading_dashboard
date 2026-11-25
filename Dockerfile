@@ -15,7 +15,7 @@ RUN --mount=type=secret,id=build_ca \
     pip install --no-cache-dir -r requirements.txt \
     && useradd --system --uid 10001 --create-home dashboard \
     && install -d -o dashboard -g dashboard /data
-COPY app/ ./app/
+COPY --chown=dashboard:dashboard app/ ./app/
 COPY --from=frontend /build/dist ./frontend/dist
 USER dashboard
 EXPOSE 8080
