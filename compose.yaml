@@ -1,0 +1,19 @@
+services:
+  dashboard:
+    build: .
+    env_file: .env
+    ports:
+      - "127.0.0.1:${DASHBOARD_PORT:-8080}:8080"
+    volumes:
+      - dashboard-data:/data
+    restart: unless-stopped
+    init: true
+    security_opt:
+      - no-new-privileges:true
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/healthz', timeout=4)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+volumes:
+  dashboard-data:

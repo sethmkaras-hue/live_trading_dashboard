@@ -1,0 +1,324 @@
+level_window: 30
+rules:
+  atr:
+    confirmations: 1
+    enabled: false
+    lookback: 14
+    mandatory: false
+    symbol: SPY
+    threshold: 1
+    timeframe: 1
+    weight: 1
+    wick_ratio: 2
+  bear_bodies:
+    confirmations: 1
+    enabled: true
+    lookback: 10
+    mandatory: false
+    symbol: SPY
+    threshold: 0
+    timeframe: 1
+    weight: 1
+    wick_ratio: 2
+  below_ema20:
+    confirmations: 1
+    enabled: true
+    lookback: 30
+    mandatory: false
+    symbol: SPY
+    threshold: 0
+    timeframe: 1
+    weight: 1
+    wick_ratio: 2
+  below_ema9:
+    confirmations: 1
+    enabled: true
+    lookback: 20
+    mandatory: false
+    symbol: SPY
+    threshold: 0
+    timeframe: 1
+    weight: 1
+    wick_ratio: 2
+  break_support:
+    confirmations: 1
+    enabled: true
+    lookback: 15
+    mandatory: false
+    symbol: SPY
+    threshold: 0
+    timeframe: 1
+    weight: 1
+    wick_ratio: 2
+  breakout:
+    confirmations: 1
+    enabled: true
+    lookback: 15
+    mandatory: false
+    symbol: SPY
+    threshold: 0
+    timeframe: 1
+    weight: 1
+    wick_ratio: 2
+  bull_bodies:
+    confirmations: 1
+    enabled: true
+    lookback: 10
+    mandatory: false
+    symbol: SPY
+    threshold: 0
+    timeframe: 1
+    weight: 1
+    wick_ratio: 2
+  ema20:
+    confirmations: 1
+    enabled: true
+    lookback: 30
+    mandatory: true
+    symbol: SPY
+    threshold: 0
+    timeframe: 1
+    weight: 1
+    wick_ratio: 2
+  ema9:
+    confirmations: 1
+    enabled: true
+    lookback: 20
+    mandatory: true
+    symbol: SPY
+    threshold: 0
+    timeframe: 1
+    weight: 1
+    wick_ratio: 2
+  ema_slope:
+    confirmations: 1
+    enabled: true
+    lookback: 30
+    mandatory: false
+    symbol: SPY
+    threshold: 0
+    timeframe: 1
+    weight: 1
+    wick_ratio: 2
+  failed_recovery:
+    confirmations: 1
+    enabled: true
+    lookback: 15
+    mandatory: false
+    symbol: SPY
+    threshold: 0
+    timeframe: 1
+    weight: 1
+    wick_ratio: 2
+  fall_resistance:
+    confirmations: 1
+    enabled: true
+    lookback: 5
+    mandatory: false
+    symbol: SPY
+    threshold: -0.02
+    timeframe: 1
+    weight: 1
+    wick_ratio: 2
+  fall_support:
+    confirmations: 1
+    enabled: true
+    lookback: 5
+    mandatory: false
+    symbol: SPY
+    threshold: -0.02
+    timeframe: 1
+    weight: 1
+    wick_ratio: 2
+  flat_resistance:
+    confirmations: 1
+    enabled: true
+    lookback: 5
+    mandatory: false
+    symbol: SPY
+    threshold: 0.02
+    timeframe: 1
+    weight: 1
+    wick_ratio: 2
+  flat_support:
+    confirmations: 1
+    enabled: true
+    lookback: 5
+    mandatory: false
+    symbol: SPY
+    threshold: 0.02
+    timeframe: 1
+    weight: 1
+    wick_ratio: 2
+  higher_high:
+    confirmations: 1
+    enabled: true
+    lookback: 30
+    mandatory: false
+    symbol: SPY
+    threshold: 0
+    timeframe: 1
+    weight: 1
+    wick_ratio: 2
+  higher_low:
+    confirmations: 1
+    enabled: true
+    lookback: 30
+    mandatory: false
+    symbol: SPY
+    threshold: 0
+    timeframe: 1
+    weight: 1
+    wick_ratio: 2
+  lower_high:
+    confirmations: 1
+    enabled: true
+    lookback: 30
+    mandatory: false
+    symbol: SPY
+    threshold: 0
+    timeframe: 1
+    weight: 1
+    wick_ratio: 2
+  lower_low:
+    confirmations: 1
+    enabled: true
+    lookback: 30
+    mandatory: false
+    symbol: SPY
+    threshold: 0
+    timeframe: 1
+    weight: 1
+    wick_ratio: 2
+  no_new_high:
+    confirmations: 1
+    enabled: true
+    lookback: 10
+    mandatory: false
+    symbol: SPY
+    threshold: 5
+    timeframe: 1
+    weight: 1
+    wick_ratio: 2
+  rejections:
+    confirmations: 1
+    enabled: true
+    lookback: 10
+    mandatory: false
+    symbol: SPY
+    threshold: 3
+    timeframe: 1
+    weight: 1
+    wick_ratio: 2
+  relative_volume:
+    confirmations: 1
+    enabled: false
+    lookback: 20
+    mandatory: false
+    symbol: SPY
+    threshold: 1.5
+    timeframe: 1
+    weight: 1
+    wick_ratio: 2
+  retest:
+    confirmations: 1
+    enabled: true
+    lookback: 15
+    mandatory: false
+    symbol: SPY
+    threshold: 0
+    timeframe: 1
+    weight: 1
+    wick_ratio: 2
+  rising_resistance:
+    confirmations: 1
+    enabled: true
+    lookback: 5
+    mandatory: false
+    symbol: SPY
+    threshold: 0.02
+    timeframe: 1
+    weight: 1
+    wick_ratio: 2
+  rising_support:
+    confirmations: 1
+    enabled: true
+    lookback: 5
+    mandatory: false
+    symbol: SPY
+    threshold: 0.02
+    timeframe: 1
+    weight: 1
+    wick_ratio: 2
+  rsi:
+    confirmations: 1
+    enabled: false
+    lookback: 14
+    mandatory: false
+    symbol: SPY
+    threshold: 55
+    timeframe: 1
+    weight: 1
+    wick_ratio: 2
+  shrinking_bulls:
+    confirmations: 1
+    enabled: true
+    lookback: 10
+    mandatory: false
+    symbol: SPY
+    threshold: 0
+    timeframe: 1
+    weight: 1
+    wick_ratio: 2
+  spread:
+    confirmations: 1
+    enabled: false
+    lookback: 1
+    mandatory: false
+    symbol: SPY
+    threshold: 0.25
+    timeframe: 1
+    weight: 1
+    wick_ratio: 2
+  sustained:
+    confirmations: 1
+    enabled: true
+    lookback: 5
+    mandatory: false
+    symbol: SPY
+    threshold: 3
+    timeframe: 1
+    weight: 1
+    wick_ratio: 2
+  trend5:
+    confirmations: 1
+    enabled: true
+    lookback: 20
+    mandatory: true
+    symbol: SPY
+    threshold: 0
+    timeframe: 5
+    weight: 1
+    wick_ratio: 2
+  upper_wicks:
+    confirmations: 1
+    enabled: true
+    lookback: 10
+    mandatory: false
+    symbol: SPY
+    threshold: 3
+    timeframe: 1
+    weight: 1
+    wick_ratio: 2
+  vwap:
+    confirmations: 1
+    enabled: false
+    lookback: 20
+    mandatory: false
+    symbol: SPY
+    threshold: 0
+    timeframe: 1
+    weight: 1
+    wick_ratio: 2
+tolerance_pct: 0.05
+trail_minutes: 60
